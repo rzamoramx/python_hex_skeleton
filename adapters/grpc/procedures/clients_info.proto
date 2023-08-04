@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package clients.info;
+
+service ClientsInfo {
+  rpc SetPremium (ReqUpdToFP) returns (RespGeneric) {}
+}
+
+message ReqUpdToFP {
+  string account_id = 1;
+  int32 premium_id = 2;  // default value is 0
+  string expires_at = 3;
+  string purchased_at = 4;
+  bool auto_renew = 5;
+  int32 previous_premium_id = 6;
+  string previous_purchased_at = 7;
+  string previous_expires_at = 8;
+  string period = 9;
+  string upd_from = 10;
+  string email = 11;
+  string attempt = 12;
+  Coordinates geo_loc = 13;
+}
+
+message Coordinates {
+  float latitude = 1;
+  float longitude = 2;
+}
+
+message RespGeneric {
+  string status = 1;
+  string message = 2;
+}
+
+

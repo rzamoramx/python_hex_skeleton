@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package treasury;
+
+service Treasury {
+  rpc InstructPayment(ReqInstructPayment) returns (RespGeneric) {}
+}
+
+message ReqInstructPayment {
+  int32 Type = 1;
+  string TransactionId = 2;
+  string OriginContract = 3;
+  string DestinationContract = 4;
+  int64 Timestamp = 5;
+  float Amount = 6;
+  string Concept = 7;
+  string Date = 8;
+  string MovementType = 9;
+  Coordinates GeoLoc = 10;
+}
+
+message Coordinates {
+  double Latitude = 1;
+  double Longitude = 2;
+}
+
+message RespGeneric {
+  bool status = 1;
+  string message = 2;
+}
